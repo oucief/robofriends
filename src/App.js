@@ -25,27 +25,23 @@ class App extends Component {
     const filteredRobots = this.state.robots.filter((robot) =>
       robot.name.toLowerCase().includes(this.state.searchField)
     );
-    if (this.state.robots.length < 1) {
-      return <h1>Loading...</h1>
-    }
-    else {
-      
-      return (
-        <div className="container">
-          <div className="header">
-            <h1>RoboFriends</h1>
-            <Search searchChange={this.searchChange} />
+    return (
+      !this.state.robots.length ? 
+        <h1>Loading...</h1> : 
+          <div className="container">
+            <div className="header">
+              <h1>RoboFriends</h1>
+              <Search searchChange={this.searchChange} />
+            </div>
+            <div className="body">
+              <CardList robots={filteredRobots} />
+            </div>
+            <p>
+              Made With ❤ by
+              <a href="http://github.com/oucief" target="_blank" rel="noreferrer"> Abderrahmane OUCIEF</a>.
+            </p>
           </div>
-          <div className="body">
-            <CardList robots={filteredRobots} />
-          </div>
-          <p>
-            Made With ❤ by
-            <a href="http://github.com/oucief" target="_blank" rel="noreferrer"> Abderrahmane OUCIEF</a>.
-          </p>
-        </div>
-      );
-    }
+    );
   }
 }
 
