@@ -1,25 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import CardList from "./components/CardList";
+import Search from "./components/Search";
+import axios from "axios";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      robots: [],
+      searchField: "",
+    };
+  }
+
+  componentDidMount() {
+    axios.get('https://jsonplaceholder.typicode.com/users')
+      .then(response => this.setState({robots: response.data}))
+  }
+
+  searchChange = (event) => {
+    this.setState({ searchField: event.target.value });
+  };
+
+  render() {
+    const filteredRobots = this.state.robots.filter((robot) =>
+      robot.name.toLowerCase().includes(this.state.searchField)
+    );
+    if (this.state.robots.length < 1) {
+      return <h1>Loading...</h1>
+    }
+    else {
+      
+      return (
+        <div className="container">
+          <div className="header">
+            <h1>RoboFriends</h1>
+            <Search searchChange={this.searchChange} />
+          </div>
+          <div className="body">
+            <CardList robots={filteredRobots} />
+          </div>
+          <p>
+            Made With ❤ by
+            <a href="http://github.com/oucief" target="_blank" rel="noreferrer"> Abderrahmane OUCIEF</a>.
+          </p>
+        </div>
+      );
+    }
+  }
 }
 
 export default App;

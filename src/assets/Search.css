@@ -1,0 +1,33 @@
+.search {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.search input {
+    font-size: medium;
+    font-weight: 700;
+    color: #000f3f;
+    border: 1px solid #61eaff;
+    box-shadow: 1px 1px 10px 1px #61eaffa6;
+    background-color: #61eaff;
+    width: 80%;
+    display: block;
+    padding: 1rem;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+@media (max-width: 426px) { 
+    .search input {
+        width: 70%;
+        margin: 1rem;
+      }
+    
+  }

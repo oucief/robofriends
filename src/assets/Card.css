@@ -1,0 +1,36 @@
+.card {
+    min-width: 230px;
+    box-shadow: 1px 1px 10px 1px #61eaff68;
+    margin: 1rem;
+    text-align: center;
+    background-color: #61eaff;
+    color: #000f3f;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+    -webkit-transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+}
+
+@media (max-width: 426px) { 
+    .card {
+        width: auto;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+}
